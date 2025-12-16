@@ -198,43 +198,59 @@
             padding: 60px 0;
         }
         
-        /* Левая часть хедера */
+        /* Левая часть хедера - согласно image.png */
         .header-left {
             margin-bottom: 40px;
         }
         
         .header-title {
             font-size: 48px;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 20px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 15px;
             text-transform: uppercase;
         }
         
-        .header-subtitle {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 30px;
+        .header-title-line1 {
+            display: block;
+            font-size: 52px;
+        }
+        
+        .header-title-line2 {
+            display: block;
+            font-size: 52px;
             color: #ffcc00;
+        }
+        
+        .header-subtitle {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: #fff;
         }
         
         .header-description {
             font-size: 18px;
-            margin-bottom: 40px;
-            max-width: 600px;
+            margin-bottom: 35px;
+            max-width: 500px;
+            opacity: 0.9;
+            line-height: 1.5;
         }
         
         .header-btn {
             display: inline-block;
             background: #ff0000;
             color: white;
-            padding: 15px 40px;
+            padding: 18px 45px;
             border-radius: 4px;
             text-decoration: none;
             font-weight: 700;
             font-size: 18px;
             transition: background 0.3s;
             text-transform: uppercase;
+            margin-bottom: 40px;
+            border: none;
+            cursor: pointer;
         }
         
         .header-btn:hover {
@@ -243,18 +259,57 @@
             text-decoration: none;
         }
         
-        /* ПРАВАЯ ЧАСТЬ ХЕДЕРА - 6 КАРТОЧЕК */
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 30px 0;
+        }
+        
+        /* Блок тарифов */
+        .header-tariffs {
+            margin-top: 20px;
+            padding: 0;
+        }
+        
+        .tariffs-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+        
+        .tariff-text {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+        
+        .tariff-badge {
+            display: inline-block;
+            background: #ff0000;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        /* ПРАВАЯ ЧАСТЬ ХЕДЕРА - карточки согласно image.png */
         .header-cards {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
         .header-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            padding: 20px;
+            padding: 20px 15px;
             text-align: center;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -271,90 +326,99 @@
             align-items: center;
             gap: 20px;
             text-align: left;
+            padding: 15px;
         }
         
         .card-image {
             width: 100%;
-            height: 200px;
-            background: #555;
             border-radius: 4px;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ccc;
-            font-size: 14px;
         }
         
         .card-image.large {
-            width: 250px;
-            height: 150px;
+            width: 180px;
+            height: auto;
             flex-shrink: 0;
+            background: transparent;
+        }
+        
+        .card-image.large img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
         }
         
         .card-title {
             font-size: 36px;
-            font-weight: 700;
+            font-weight: 800;
             color: #ffcc00;
             margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .card-title.large {
+            font-size: 32px;
         }
         
         .card-description {
             font-size: 14px;
             opacity: 0.9;
+            line-height: 1.3;
         }
         
-        /* Статистика под карточками */
-        .header-stats {
+        .card-description.large {
+            font-size: 14px;
+        }
+        
+        /* Мелкие карточки - 2 колонки */
+        .small-card {
+            padding: 15px 10px;
+            min-height: 120px;
             display: flex;
-            justify-content: space-between;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 8px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            flex-direction: column;
+            justify-content: center;
         }
         
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
+        .small-card .card-title {
             font-size: 32px;
-            font-weight: 700;
-            color: #ffcc00;
             margin-bottom: 5px;
         }
         
-        .stat-text {
-            font-size: 14px;
-            opacity: 0.9;
+        .small-card .card-description {
+            font-size: 12px;
         }
         
-        /* Блок тарифов */
-        .header-tariffs {
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 8px;
+        /* Особый стиль для карточки с разделённым числом */
+        .split-number {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
         }
         
-        .tariffs-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-align: center;
+        .split-number-large {
+            font-size: 40px;
+            font-weight: 800;
             color: #ffcc00;
         }
         
-        .tariff-badge {
-            display: inline-block;
-            background: #ff0000;
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-left: 10px;
+        .split-number-small {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ffcc00;
+        }
+        
+        /* Дополнительная статистика */
+        .extra-stat {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .extra-stat .card-title {
+            font-size: 36px;
         }
         
         /* Мобильные стили */
@@ -394,12 +458,13 @@
                 display: block;
             }
             
-            .header-title {
+            .header-title-line1,
+            .header-title-line2 {
                 font-size: 36px;
             }
             
             .header-subtitle {
-                font-size: 20px;
+                font-size: 22px;
             }
             
             .header-cards {
@@ -408,6 +473,10 @@
             
             .header-card.large {
                 grid-column: span 2;
+            }
+            
+            .card-image.large {
+                width: 140px;
             }
         }
         
@@ -423,15 +492,17 @@
             
             .card-image.large {
                 width: 100%;
+                max-width: 200px;
+                margin: 0 auto 15px;
             }
             
-            .header-stats {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .header-title {
+            .header-title-line1,
+            .header-title-line2 {
                 font-size: 28px;
+            }
+            
+            .header-subtitle {
+                font-size: 18px;
             }
         }
     </style>
@@ -494,81 +565,79 @@
                     <!-- ЛЕВАЯ ЧАСТЬ - ТЕКСТ И КНОПКА -->
                     <div class="col-md-6">
                         <div class="header-left">
-                            <h1 class="header-title">Поддержка сайтов на Drupal</h1>
+                            <h1 class="header-title">
+                                <span class="header-title-line1">ПОДДЕРЖКА</span>
+                                <span class="header-title-line2">САЙТОВ НА DRUPAL</span>
+                            </h1>
+                            
                             <p class="header-subtitle">13 лет совершенствуем компетенции в Drupal поддержке!</p>
+                            
                             <p class="header-description">
                                 Разрабатываем и оптимизируем модули, расширяем функциональность сайтов, 
                                 обновляем дизайн
                             </p>
-                            <a href="#contact-form" class="header-btn">Связаться с нами</a>
+                            
+                            <a href="#contact-form" class="header-btn">СВЯЗАТЬСЯ С НАМИ</a>
+                            
+                            <div class="section-divider"></div>
                             
                             <!-- Блок тарифов -->
                             <div class="header-tariffs">
                                 <h3 class="tariffs-title">ТАРИФЫ</h3>
-                                <p>
-                                    <strong>Drupal разработился в России по версии Рейтинга Рунета</strong>
+                                <p class="tariff-text">
+                                    Drupal разработчика в России по версии Рейтинга Рунета
                                     <span class="tariff-badge">#1</span>
                                 </p>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- ПРАВАЯ ЧАСТЬ - 6 КАРТОЧЕК -->
+                    <!-- ПРАВАЯ ЧАСТЬ - КАРТОЧКИ согласно image.png -->
                     <div class="col-md-6">
-                        <!-- Сетка из 6 карточек -->
+                        <!-- Большая карточка с изображением кубка -->
+                        <div class="header-card large">
+                            <div class="card-image large">
+                                <img src="assets/cup.png" alt="Кубок Drupal-разработчика №1">
+                            </div>
+                            <div>
+                                <div class="card-title large">Drupal-разработчик №1</div>
+                                <p class="card-description large">России по версии Рейтинга Рунета</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Сетка из 4 маленьких карточек (2x2) -->
                         <div class="header-cards">
-                            <!-- Первая карточка (большая с изображением) -->
-                            <div class="header-card large">
-                                <div class="card-image large">
-                                    <!-- Пустое изображение - вы загрузите потом -->
-                                    <div><img src="/assets/cup.png" /></div>
-                                </div>
-                                <div>
-                                    <div class="card-title">Drupal-разработчик №1</div>
-                                    <p class="card-description">России по версии Рейтинга Рунета</p>
-                                </div>
-                            </div>
-                            
-                            <!-- 5 маленьких карточек -->
-                            <div class="header-card">
-                                <div class="card-title">14</div>
-                                <p class="card-description">лет опыта в сфере Drupal</p>
-                            </div>
-                            
-                            <div class="header-card">
+                            <!-- Верхний ряд -->
+                            <div class="header-card small-card">
                                 <div class="card-title">3+</div>
                                 <p class="card-description">средний опыт специалистов более 3 лет</p>
                             </div>
                             
-                            <div class="header-card">
+                            <div class="header-card small-card">
                                 <div class="card-title">300+</div>
                                 <p class="card-description">Проектов на поддержке</p>
                             </div>
                             
-                            <div class="header-card">
-                                <div class="card-title">90 000+</div>
-                                <p class="card-description">часов поддержки сайтов на Drupal</p>
+                            <!-- Нижний ряд -->
+                            <div class="header-card small-card">
+                                <div class="card-title">14</div>
+                                <p class="card-description">лет опыта в сфере Drupal</p>
                             </div>
                             
-                            <div class="header-card">
-                                <div class="card-title">50+</div>
-                                <p class="card-description">модулей и тем в формате DrupalGive</p>
+                            <div class="header-card small-card">
+                                <div class="split-number">
+                                    <span class="split-number-large">90</span>
+                                    <span class="split-number-small">000+</span>
+                                </div>
+                                <p class="card-description">часов поддержки сайтов на Drupal</p>
                             </div>
                         </div>
                         
-                        <!-- Статистика под карточками -->
-                        <div class="header-stats">
-                            <div class="stat-item">
-                                <div class="stat-number">50+</div>
-                                <div class="stat-text">модулей и тем в формате DrupalGive</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">90 000+</div>
-                                <div class="stat-text">часов поддержки сайтов на Drupal</div>
-                            </div>
-                            <div class="stat-item">
-                                <div class="stat-number">300+</div>
-                                <div class="stat-text">Проектов на поддержке</div>
+                        <!-- Дополнительная статистика (отдельная карточка) -->
+                        <div class="extra-stat">
+                            <div class="header-card">
+                                <div class="card-title">50+</div>
+                                <p class="card-description">модулей и тем в формате DrupalGive</p>
                             </div>
                         </div>
                     </div>
