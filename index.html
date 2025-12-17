@@ -314,22 +314,10 @@
         }
         
         /* ПРАВАЯ ЧАСТЬ - КАРТОЧКИ 3x2 */
-        .header-cards-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .cards-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-        
-        .header-card {
+            .header-card {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 8px;
-            padding: 20px 15px;
+            padding: 15px 10px;
             text-align: center;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -337,52 +325,101 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            min-height: 150px;
+            min-height: 120px;
+            height: 100%;
         }
         
         .header-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
         }
         
-        /* Стили для карточек */
-        .header-card.large {
-            grid-column: span 2;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 15px;
-            text-align: left;
-            padding: 15px;
-            min-height: auto;
+        /* Сетка для карточек 3x2 */
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
-        .card-image.large {
-            width: 120px;
-            height: auto;
-            flex-shrink: 0;
-            background: transparent;
+        .cards-row:last-child {
+            margin-bottom: 0;
         }
         
-        .card-image.large img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-            max-height: 100px;
-        }
-        
-        .card-title.large {
-            font-size: 22px;
-            font-weight: 700;
+        /* Заголовок карточки */
+        .card-title {
+            font-size: 28px;
+            font-weight: 800;
             color: #ffcc00;
             margin-bottom: 5px;
-            line-height: 1.2;
+            line-height: 1;
         }
         
-        .card-description.large {
-            font-size: 12px;
+        /* Описание карточки */
+        .card-description {
+            font-size: 11px;
             opacity: 0.9;
             line-height: 1.3;
+            margin: 0;
+        }
+        
+        /* Стиль для разделённого числа */
+        .split-number {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        
+        .split-number-large {
+            font-size: 32px;
+            font-weight: 800;
+            color: #ffcc00;
+        }
+        
+        .split-number-small {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffcc00;
+        }
+        
+        /* Убрать старые стили для large карточки */
+        .header-card.large {
+            display: none;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 991px) {
+            .cards-row {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .card-title {
+                font-size: 24px;
+            }
+            
+            .split-number-large {
+                font-size: 28px;
+            }
+            
+            .split-number-small {
+                font-size: 18px;
+            }
+            
+            .card-description {
+                font-size: 10px;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .cards-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-card {
+                min-height: 100px;
+                padding: 12px 8px;
+            }
         }
         
         /* Обновление грида для карточек */
@@ -672,41 +709,39 @@
                     <!-- ПРАВАЯ ЧАСТЬ - КАРТОЧКИ 3x2 -->
                     <div class="col-md-6">
                         <div class="header-cards-container">
-                            <!-- ВЕРХНИЙ РЯД (3 карточки) -->
-                            <div class="cards-row top-row">
-                                <!-- Большая карточка с изображением кубка (занимает 2 колонки) -->
-                                <div class="header-card large">
-                                    <div class="card-image large">
-                                        <img src="assets/cup.png" alt="Кубок Drupal-разработчика №1" style="width: 120px; height: auto;">
+                            <!-- Первая строка (3 карточки) -->
+                            <div class="cards-row">
+                                <!-- Карточка 1 (с иконкой) -->
+                                <div class="header-card small-card">
+                                    <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                                        <img src="assets/cup.png" alt="Кубок" style="width: 30px; height: 30px;">
+                                        <div class="card-title">#1</div>
                                     </div>
-                                    <div>
-                                        <div class="card-title large">Drupal-разработчик №1</div>
-                                        <p class="card-description large">России по версии Рейтинга Рунета</p>
-                                    </div>
+                                    <p class="card-description">Drupal-разработчик России по версии Рейтинга Рунета</p>
                                 </div>
                                 
-                                <!-- Маленькая карточка 1 -->
+                                <!-- Карточка 2 -->
                                 <div class="header-card small-card">
                                     <div class="card-title">14</div>
                                     <p class="card-description">лет опыта в сфере Drupal</p>
                                 </div>
-                            </div>
-                            
-                            <!-- НИЖНИЙ РЯД (3 карточки) -->
-                            <div class="cards-row">
-                                <!-- Маленькая карточка 2 -->
+                                
+                                <!-- Карточка 3 -->
                                 <div class="header-card small-card">
                                     <div class="card-title">30+</div>
                                     <p class="card-description">сертификатов от Acquia 2022</p>
                                 </div>
-                                
-                                <!-- Маленькая карточка 3 -->
+                            </div>
+                            
+                            <!-- Вторая строка (3 карточки) -->
+                            <div class="cards-row">
+                                <!-- Карточка 4 -->
                                 <div class="header-card small-card">
                                     <div class="card-title">300+</div>
                                     <p class="card-description">Проектов на поддержке</p>
                                 </div>
                                 
-                                <!-- Маленькая карточка 4 (с разделённым числом) -->
+                                <!-- Карточка 5 -->
                                 <div class="header-card small-card">
                                     <div class="split-number">
                                         <span class="split-number-large">90</span>
@@ -714,10 +749,8 @@
                                     </div>
                                     <p class="card-description">часов поддержки сайтов на Drupal</p>
                                 </div>
-                            </div>
-                            
-                            <!-- ОТДЕЛЬНАЯ КАРТОЧКА НИЖЕ (как на макете) -->
-                            <div style="margin-top: 15px;">
+                                
+                                <!-- Карточка 6 -->
                                 <div class="header-card small-card">
                                     <div class="card-title">50+</div>
                                     <p class="card-description">модулей и тем в формате DrupalGive</p>
