@@ -27,14 +27,24 @@
             font-weight: 400;
             line-height: 1.6;
             color: #333;
+            background: #fff;
         }
         
-        /* ХЕДЕР С ВИДЕО */
+        /* КОНТЕЙНЕР ДЛЯ ВСЕГО КОНТЕНТА (кроме хедера) */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* ХЕДЕР НА ВСЮ ШИРИНУ ЭКРАНА */
         .site-header {
             position: relative;
             min-height: 100vh;
             color: white;
             overflow: hidden;
+            width: 100%;
         }
         
         .header-video {
@@ -58,7 +68,7 @@
             z-index: 0;
         }
         
-        /* НАВИГАЦИЯ */
+        /* НАВИГАЦИЯ НА ВСЮ ШИРИНУ */
         .navbar {
             position: absolute;
             top: 0;
@@ -187,11 +197,16 @@
             padding: 5px;
         }
         
-        /* КОНТЕНТ ХЕДЕРА */
+        /* КОНТЕНТ ХЕДЕРА внутри контейнера */
         .header-content {
             position: relative;
             z-index: 1;
             padding-top: 120px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 15px;
+            padding-right: 15px;
         }
         
         .header-main {
@@ -298,12 +313,17 @@
             vertical-align: middle;
         }
         
-        /* ПРАВАЯ ЧАСТЬ ХЕДЕРА - карточки согласно image.png */
-        .header-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        /* ПРАВАЯ ЧАСТЬ - КАРТОЧКИ 3x2 */
+        .header-cards-container {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
-            margin-bottom: 20px;
+        }
+        
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
         }
         
         .header-card {
@@ -314,6 +334,10 @@
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 150px;
         }
         
         .header-card:hover {
@@ -323,14 +347,15 @@
         .header-card.large {
             grid-column: span 2;
             display: flex;
+            flex-direction: row;
             align-items: center;
             gap: 20px;
             text-align: left;
             padding: 15px;
+            min-height: auto;
         }
         
         .card-image {
-            width: 100%;
             border-radius: 4px;
             overflow: hidden;
             display: flex;
@@ -374,18 +399,10 @@
             font-size: 14px;
         }
         
-        /* Мелкие карточки - 2 колонки */
-        .small-card {
-            padding: 15px 10px;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
+        /* Маленькие карточки */
         .small-card .card-title {
             font-size: 32px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         
         .small-card .card-description {
@@ -397,6 +414,7 @@
             display: flex;
             align-items: baseline;
             justify-content: center;
+            margin-bottom: 8px;
         }
         
         .split-number-large {
@@ -411,14 +429,9 @@
             color: #ffcc00;
         }
         
-        /* Дополнительная статистика */
-        .extra-stat {
-            margin-top: 20px;
-            text-align: center;
-        }
-        
-        .extra-stat .card-title {
-            font-size: 36px;
+        /* ОТСТУПЫ ДЛЯ ГРИДА 3x2 */
+        .cards-row.top-row {
+            margin-bottom: 15px;
         }
         
         /* Мобильные стили */
@@ -467,7 +480,7 @@
                 font-size: 22px;
             }
             
-            .header-cards {
+            .cards-row {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -481,7 +494,11 @@
         }
         
         @media (max-width: 767px) {
-            .header-cards {
+            .header-content {
+                padding-top: 100px;
+            }
+            
+            .cards-row {
                 grid-template-columns: 1fr;
             }
             
@@ -504,11 +521,31 @@
             .header-subtitle {
                 font-size: 18px;
             }
+            
+            .header-btn {
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header-title-line1,
+            .header-title-line2 {
+                font-size: 24px;
+            }
+            
+            .header-subtitle {
+                font-size: 16px;
+            }
+            
+            .header-description {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- ШАПКА С ВИДЕО -->
+    <!-- ШАПКА С ВИДЕО (на всю ширину экрана) -->
     <header class="site-header">
         <!-- Фоновое видео -->
         <video autoplay muted loop class="header-video">
@@ -558,8 +595,8 @@
             </div>
         </nav>
         
-        <!-- КОНТЕНТ ХЕДЕРА -->
-        <div class="header-content container">
+        <!-- КОНТЕНТ ХЕДЕРА (внутри контейнера) -->
+        <div class="header-content">
             <div class="header-main">
                 <div class="row">
                     <!-- ЛЕВАЯ ЧАСТЬ - ТЕКСТ И КНОПКА -->
@@ -592,52 +629,59 @@
                         </div>
                     </div>
                     
-                    <!-- ПРАВАЯ ЧАСТЬ - КАРТОЧКИ согласно image.png -->
+                    <!-- ПРАВАЯ ЧАСТЬ - КАРТОЧКИ 3x2 -->
                     <div class="col-md-6">
-                        <!-- Большая карточка с изображением кубка -->
-                        <div class="header-card large">
-                            <div class="card-image large">
-                                <img src="assets/cup.png" alt="Кубок Drupal-разработчика №1">
-                            </div>
-                            <div>
-                                <div class="card-title large">Drupal-разработчик №1</div>
-                                <p class="card-description large">России по версии Рейтинга Рунета</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Сетка из 4 маленьких карточек (2x2) -->
-                        <div class="header-cards">
-                            <!-- Верхний ряд -->
-                            <div class="header-card small-card">
-                                <div class="card-title">3+</div>
-                                <p class="card-description">средний опыт специалистов более 3 лет</p>
-                            </div>
-                            
-                            <div class="header-card small-card">
-                                <div class="card-title">300+</div>
-                                <p class="card-description">Проектов на поддержке</p>
-                            </div>
-                            
-                            <!-- Нижний ряд -->
-                            <div class="header-card small-card">
-                                <div class="card-title">14</div>
-                                <p class="card-description">лет опыта в сфере Drupal</p>
-                            </div>
-                            
-                            <div class="header-card small-card">
-                                <div class="split-number">
-                                    <span class="split-number-large">90</span>
-                                    <span class="split-number-small">000+</span>
+                        <div class="header-cards-container">
+                            <!-- ВЕРХНИЙ РЯД (3 карточки) -->
+                            <div class="cards-row top-row">
+                                <!-- Большая карточка с изображением кубка (занимает 2 колонки) -->
+                                <div class="header-card large">
+                                    <div class="card-image large">
+                                        <img src="assets/cup.png" alt="Кубок Drupal-разработчика №1">
+                                    </div>
+                                    <div>
+                                        <div class="card-title large">Drupal-разработчик №1</div>
+                                        <p class="card-description large">России по версии Рейтинга Рунета</p>
+                                    </div>
                                 </div>
-                                <p class="card-description">часов поддержки сайтов на Drupal</p>
+                                
+                                <!-- Маленькая карточка 1 -->
+                                <div class="header-card small-card">
+                                    <div class="card-title">14</div>
+                                    <p class="card-description">лет опыта в сфере Drupal</p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <!-- Дополнительная статистика (отдельная карточка) -->
-                        <div class="extra-stat">
-                            <div class="header-card">
-                                <div class="card-title">50+</div>
-                                <p class="card-description">модулей и тем в формате DrupalGive</p>
+                            
+                            <!-- НИЖНИЙ РЯД (3 карточки) -->
+                            <div class="cards-row">
+                                <!-- Маленькая карточка 2 -->
+                                <div class="header-card small-card">
+                                    <div class="card-title">3+</div>
+                                    <p class="card-description">средний опыт специалистов более 3 лет</p>
+                                </div>
+                                
+                                <!-- Маленькая карточка 3 -->
+                                <div class="header-card small-card">
+                                    <div class="card-title">300+</div>
+                                    <p class="card-description">Проектов на поддержке</p>
+                                </div>
+                                
+                                <!-- Маленькая карточка 4 (с разделённым числом) -->
+                                <div class="header-card small-card">
+                                    <div class="split-number">
+                                        <span class="split-number-large">90</span>
+                                        <span class="split-number-small">000+</span>
+                                    </div>
+                                    <p class="card-description">часов поддержки сайтов на Drupal</p>
+                                </div>
+                            </div>
+                            
+                            <!-- ОТДЕЛЬНАЯ КАРТОЧКА НИЖЕ (как на макете) -->
+                            <div style="margin-top: 15px;">
+                                <div class="header-card small-card">
+                                    <div class="card-title">50+</div>
+                                    <p class="card-description">модулей и тем в формате DrupalGive</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -646,9 +690,13 @@
         </div>
     </header>
 
-    <!-- Основной контент остаётся здесь -->
-    <main>
-        <!-- Остальные секции... -->
+    <!-- ОСНОВНОЙ КОНТЕНТ (внутри контейнера) -->
+    <main class="container">
+        <!-- Здесь будут остальные секции сайта -->
+        <div style="padding: 100px 0; text-align: center;">
+            <h2>Основной контент сайта</h2>
+            <p>Эта часть ограничена шириной контейнера (max-width: 1200px)</p>
+        </div>
     </main>
 
     <script>
